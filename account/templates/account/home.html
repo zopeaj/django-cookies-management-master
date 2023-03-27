@@ -1,0 +1,40 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home::Account</title>
+</head>
+<body>
+
+
+{% if confirm %}
+    <div>
+      Your profile has been udpated
+    </div>
+    <div>
+      <img src="{{ account.avatar.url }}" alt="my-account" class="avatar-field"/>
+    </div>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form|crispy}}
+      <button type="submit" class="btn btn-primary">
+        update
+      </button>
+    </form>
+     {% if data %}
+      {% for d in data %}
+        <div>
+          <h1>{% d.result%}</h1>
+          <p>{% d.content %}</p>
+          <a href="{{ url 'account:update' d.id}}">Update</a>
+          <a href="{{ url 'account:delete' d.id }}">Delete</a>
+        </div>
+      {% endfor  %}
+    {% endif %}
+{% endif %}
+</body>
+</html>

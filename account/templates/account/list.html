@@ -1,0 +1,28 @@
+{% load static %}
+{% crispy %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>List:Account</title>
+</head>
+<body>
+
+{% block content %}
+  {% if account %}
+    {% for user in account %}
+        <div class="user-card">
+          <div class="user-card-header">
+            <h4>{{ user.user.username }}</h4>
+            <img src="{{ user.image_field.url }}" alt="{{ user.user.username }}" />
+            <p>
+              <a href="{{ url 'account:detail' user.id}}">User Page</a>
+            </p>
+          </div>
+        </div>
+    {% endfor  %}
+  {%  %}
+{% block content %}
+</body>
+</html>

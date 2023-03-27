@@ -1,0 +1,31 @@
+{% load static %}
+{% crispy %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detail::Account {account.id}</title>
+</head>
+<body>
+{% block content %}
+  <div>
+    <div class="image-round">
+      <img src="{{ account.avatar.url }}" class="img-data">
+    </div>
+    <div>
+      <p>{{ account.user.username }}</p>
+      <p>{{ account.age }}</p>
+      <a href="{{ url 'account:delete' account.id }}">
+        Delete
+      </a>
+        <p></p>
+      <a href="{{ url 'account:update' account.id }}">
+        Update
+      </a>
+    </div>
+  </div>
+{% endblock content %}
+</body>
+</html>
